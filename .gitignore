@@ -2,3 +2,6 @@ node_modules/
 __pycache__/
 *.pyc
 .venv/
+
+# Your machine's real inventory — hostnames, IPs, paths. Never committed.
+MACHINE.md

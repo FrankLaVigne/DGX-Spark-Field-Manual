@@ -59,6 +59,31 @@ If you would rather not grant this, **open an issue instead of a pull request**.
 A well-described bug report is enormously useful and carries no rights question
 at all.
 
+## Placeholder convention
+
+Committed material must not identify a specific machine or person. Readers each
+have their own box; a manual full of somebody else's hostnames is noise at best.
+
+| Use | Not |
+|---|---|
+| `$HOME`, `/home/you` | a real user's home path |
+| `<spark-ip>`, or `192.168.1.50` as an obvious example | your actual LAN address |
+| `<hostname>`, or `spark` | your actual hostname |
+| `enP*` / `wlP*`, noting names vary | a specific interface name |
+| `<gpu-bus-id>` | your actual bus ID |
+
+**Sanitizing does not weaken a `VERIFIED` claim.** Replacing identifiers in real
+output is expected. Fabricating the output is not. If you sanitize a transcript,
+it is still `VERIFIED` — the numbers, versions, and behaviour must remain exactly
+what the machine printed.
+
+Hardware specifications, package versions, and measured sizes are **not**
+identifying — they are common to the platform — and should be kept. `GB10`,
+`121 GiB`, `driver 580.159.03`, and `396 GiB` all stay.
+
+Your own machine's real values belong in `MACHINE.md`, which is gitignored.
+Copy `MACHINE.example.md` to start one.
+
 ## Practical notes
 
 - One topic per pull request.

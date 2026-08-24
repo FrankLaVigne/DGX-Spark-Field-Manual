@@ -1,7 +1,7 @@
 # DGX Spark Field Manual — Design
 
 **Date:** 2026-08-24 · **Revised:** 2026-08-24 (audience inversion, distribution)
-**Host:** proteus (DGX Spark, GB10) · **Repo root:** `/home/frank/operations`
+**Reference machine:** DGX Spark (GB10) · specifics recorded in `MACHINE.md`
 
 Strategic decisions and their rationale live in `docs/decisions/`. This document
 covers what is being built; those cover why it is licensed and positioned the
@@ -66,11 +66,15 @@ This policy matters *more* for a novice-substrate audience, not less: a reader
 who cannot yet distinguish a correct command from a plausible one is entirely
 dependent on the manual being right.
 
-## Baseline machine state (verified 2026-08-24)
+## Reference machine (verified 2026-08-24)
+
+Hostnames, LAN addresses, network-interface names, GPU bus IDs, and user paths
+are deliberately absent from committed material — see the placeholder convention
+in `CONTRIBUTING.md`. Hardware specifications, package versions, and measured
+sizes are kept, because they are common to the platform rather than identifying.
 
 | Property | Value |
 |---|---|
-| Hostname | proteus |
 | SoC | NVIDIA GB10 |
 | CPU | 20 cores — 10x Cortex-X925 + 10x Cortex-A725, aarch64 |
 | Memory | 121 GiB unified, 15 GiB swap |
@@ -78,7 +82,7 @@ dependent on the manual being right.
 | OS | Ubuntu 24.04.4 LTS, kernel 6.17.0-1026-nvidia |
 | Driver | 580.159.03 |
 | CUDA | 13.0 |
-| Network | enP7s7 wired, 192.168.1.171/24; wlP9s9 down |
+| Network | wired up (`enP*`), Wi-Fi down (`wlP*`) — interface names vary |
 | Remote access | xrdp active and enabled; RDP from a Windows host |
 
 Installed: Docker + nvidia-ctk, Ollama (systemd service, active), LM Studio,
@@ -126,14 +130,15 @@ their consequences; running them is a separate decision by the author.
 ## Structure
 
 ```
-/home/frank/operations/
+<repo-root>/
   README.md              entry point, status legend, navigation
   LICENSE                dual-license pointer
   LICENSE-code           Apache-2.0 (canonical)
   LICENSE-prose          CC BY-NC-SA 4.0 (canonical)
   NOTICE                 attribution, incl. NVIDIA playbooks
   CONTRIBUTING.md        contribution guide + CLA
-  MACHINE.md             verified inventory of proteus + drift log
+  MACHINE.md             YOUR machine's inventory + drift log (gitignored)
+  MACHINE.example.md     template to copy
   runbooks/              task-oriented: "I want to ___"
   troubleshooting/
     INDEX.md             symptom -> file, greppable by error string

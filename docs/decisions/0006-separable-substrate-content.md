@@ -46,8 +46,8 @@ illustrations appear as examples, clearly marked, not as premises.
 ## Consequence for structure
 
 - Each runbook states its scope at the top: Spark-specific, or general.
-- Examples drawn from `proteus` are labelled as examples, so a reader on
-  different hardware knows what to substitute.
+- Examples drawn from the reference machine are labelled as examples, so a
+  reader on different hardware knows what to substitute.
 - `book/OUTLINE.md` tracks the perishable/durable split per chapter, so the
   extractable subset is always visible rather than being reconstructed under
   deadline.

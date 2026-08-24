@@ -36,12 +36,12 @@ systems administrators.
 
 ## The founding evidence
 
-Discovered on the author's own machine while drafting, and worth recording
+Discovered on the reference machine while drafting, and worth recording
 because it is the thesis in miniature:
 
 ```
 $ du -sh ~/.ollama
-16K     /home/frank/.ollama          <-- appears empty
+16K     /home/you/.ollama            <-- appears empty
 
 $ ollama list
 llama4:maverick    244 GB
@@ -59,7 +59,7 @@ Linux facts conspire to hide it:
 
 1. Ollama runs as a **systemd system service**, under a service account named
    `ollama`.
-2. A service account's home is therefore `/usr/share/ollama`, not `/home/frank`.
+2. A service account's home is therefore `/usr/share/ollama`, not `$HOME`.
 3. That directory is mode `750`, owned by `ollama`, so the human user cannot
    read it — and `du` fails quietly rather than loudly.
 
