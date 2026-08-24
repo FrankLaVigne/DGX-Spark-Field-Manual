@@ -1,0 +1,15 @@
+DGX Spark Field Manual
+Copyright (c) 2026 Frank LaVigne
+
+This product includes software and documentation derived from:
+
+  NVIDIA DGX Spark Playbooks
+  https://github.com/NVIDIA/dgx-spark-playbooks
+  Licensed under the Apache License, Version 2.0
+
+Where material in this repository is derived from the NVIDIA playbooks, the
+derivation is noted at the point of use.
+
+NVIDIA, DGX, DGX Spark, CUDA, Jetson, and GB10 are trademarks of NVIDIA
+Corporation. This project is not affiliated with, endorsed by, or sponsored by
+NVIDIA Corporation.

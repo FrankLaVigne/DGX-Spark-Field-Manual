@@ -1,0 +1,38 @@
+# Licensing
+
+This repository is dual-licensed. Which license applies depends on what you are
+using.
+
+| Content | License | File |
+|---|---|---|
+| Code, scripts, configuration, Dockerfiles, YAML | Apache License 2.0 | `LICENSE-code` |
+| Prose: runbooks, troubleshooting entries, chapters, diagrams | CC BY-NC-SA 4.0 | `LICENSE-prose` |
+
+## Plain-language summary
+
+**Code** — use it for anything, including commercially. Keep the attribution and
+the `NOTICE` file.
+
+**Prose** — you may share and adapt it, including remixing it into your own
+work, provided you (a) credit the author, (b) do not use it commercially, and
+(c) license your adaptation under the same terms.
+
+"Non-commercial" is aimed squarely at one behaviour: scraping open technical
+writing and reselling it as a padded ebook. It is not intended to obstruct
+teaching, internal corporate use, conference talks, blog posts, or study
+groups.
+
+## Commercial use of the prose
+
+If you want to use the prose commercially — training materials you charge for,
+a book, paid courseware, redistribution inside a commercial product — that is
+usually fine, but it needs a separate license. Open an issue or contact the
+author. This is a conversation, not a refusal.
+
+## Rights reserved by the author
+
+The author is the sole copyright holder and retains the right to publish
+commercial editions of this material, including print and ebook editions. The
+licenses above govern third-party use; they do not constrain the author.
+
+See `docs/decisions/` for the reasoning behind this arrangement.
