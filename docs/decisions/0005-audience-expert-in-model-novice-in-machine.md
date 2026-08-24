@@ -1,6 +1,9 @@
 # 0005 — Audience: expert in the model, novice in the machine
 
 **Status:** Accepted · **Date:** 2026-08-24
+**Amended by:** [0007](0007-dual-reader-profiles-home-lab.md) — this record
+describes one reader profile as though it were the only one. 0007 adds the home
+labber, who is its mirror image, and defines how both are served.
 
 ## Decision
 

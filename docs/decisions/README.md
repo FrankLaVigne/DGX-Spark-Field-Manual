@@ -14,6 +14,7 @@ becomes dogma the moment the conditions that justified it change.
 | [0004](0004-contributor-license-agreement.md) | Require a CLA from day one | Accepted |
 | [0005](0005-audience-expert-in-model-novice-in-machine.md) | Audience: expert in the model, novice in the machine | Accepted |
 | [0006](0006-separable-substrate-content.md) | Keep substrate content separable from Spark-specific content | Accepted |
+| [0007](0007-dual-reader-profiles-home-lab.md) | Two reader profiles; how the home labber is served | Accepted |
 
 ## Context common to all of them
 

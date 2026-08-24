@@ -20,11 +20,18 @@ the byproduct.
 
 ## Audience and voice
 
-See `docs/decisions/0005-audience-expert-in-model-novice-in-machine.md`.
+See decisions `0005` (audience inversion) and `0007` (two reader profiles).
 
-The reader is a data scientist or AI engineer, often from the Windows ecosystem,
-who is **expert in the model and a novice in the machine**. This inverts the
-usual explanation policy:
+Two readers approach this hardware from opposite directions:
+
+| Profile | Knows | Needs explained |
+|---|---|---|
+| **A — AI practitioner** (primary) | the model | the machine |
+| **B — Home labber** (secondary) | the machine | the model |
+
+**Profile A is primary**: a data scientist or AI engineer, often from the
+Windows ecosystem, **expert in the model and a novice in the machine**. This
+inverts the usual explanation policy:
 
 - **Never explain** LoRA, quantization, attention, KV cache, batch size,
   checkpointing. The reader knows these better than the author.
@@ -33,6 +40,17 @@ usual explanation policy:
 
 Command-first and terse, but no command appears unexplained: what it does, what
 correct output looks like, what to do when the output differs.
+
+**Profile B is served asymmetrically** (decision 0007). Substrate explanations
+are inline main text. Domain explanations — quantization, KV cache, model
+sizing — are **marked, skippable asides**, never inline:
+
+> **Domain aside — skip this if you work with models daily.**
+> Quantization reduces the numeric precision of a model's weights…
+
+An aside must be skippable at a glance, never longer than a short paragraph, and
+never load-bearing. If a procedure cannot be followed without it, it is
+misclassified and belongs in the main text.
 
 **GUI parity.** Where LM Studio, ComfyUI, JupyterLab, VS Code Remote, or RDP is
 the better tool, say so. The author reaches this machine over `xrdp` from a
@@ -175,13 +193,14 @@ per decision 0006.
 | `05-linux-for-ai-people.md` | The substrate: systemd and services, mounts, permissions and service users, `$PATH`, `journalctl`, what Docker does to your filesystem. Written so it could stand alone (decision 0006) |
 | `10-unified-memory.md` | GB10 has no discrete VRAM; `nvidia-smi` reports `Memory-Usage: Not Supported`; how to actually measure GPU memory and predict whether a model fits |
 | `20-thermals-power.md` | Behavior under sustained load, throttling, interpreting power and clock numbers, what the chassis implies for long runs |
+| `25-power-noise-placement.md` | **Home lab.** Power draw, heat, fan noise, where to physically put it; always-on economics — idle draw times electricity rate, 24/7 vs. on-demand |
 | `30-storage-models.md` | The storage table; **storage you cannot see** (the 396 GB); duplication across LM Studio / HF cache / ComfyUI; reclamation commands and their consequences (documented, not run) |
 | `40-serving-llms.md` | Choosing among vLLM, llama.cpp, TensorRT-LLM, LM Studio, Ollama; standing up an OpenAI-compatible endpoint; making it reachable |
 | `50-finetuning.md` | LoRA/QLoRA, Unsloth, LLaMA-Factory; sizing a run against 121 GB unified memory; checkpointing and resumption |
 | `60-image-video.md` | ComfyUI and FLUX; managing the 408 GB footprint; workflow and model hygiene |
 | `70-containers-arm64.md` | NGC images, nvidia-ctk wiring, why `--ipc=host` matters, aarch64 wheel availability, compute capability vs. prebuilt wheels |
-| `80-remote-access.md` | Reaching the box from other machines — RDP, SSH, VS Code Remote, web UIs; services that survive reboot |
-| `90-keeping-it-running.md` | The operational loop: what runs always, what runs on demand, how to notice when something stopped |
+| `80-remote-access.md` | Reaching the box from other machines — RDP, SSH, VS Code Remote, web UIs. **Home lab:** LAN integration — reverse proxy, DNS, VPN, mDNS, certificates; sharing the endpoint with family, other machines, other services |
+| `90-keeping-it-running.md` | The operational loop: what runs always, what runs on demand, how to notice when something stopped. **Home lab:** backups, UPS behaviour, coexisting with a NAS / Proxmox host / Home Assistant |
 
 **Runbook 90 has its worked example already.** Every hand-started `docker run`
 container on this machine is stopped, some for ten months, while `ollama.service`
@@ -199,6 +218,10 @@ immediate concrete win plus the founding example.
 Then 40, 50, 60 in the author's priority order (inference host, fine-tuning,
 image/video). 70 is a shared dependency, written when the first of them needs it.
 80 and 90 close the loop.
+
+25 sits outside that sequence. It is Profile B material (decision 0007) and does
+not block anything, so it is written when convenient — though it is cheap, since
+measuring idle draw and noise requires only patience and a meter.
 
 ## Troubleshooting
 
