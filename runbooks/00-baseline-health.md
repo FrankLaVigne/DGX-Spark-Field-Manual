@@ -98,9 +98,23 @@ VRAM figure because there is no separate VRAM. Every habit you have built around
 "will this fit in 24 GB" needs re-forming, mostly in your favor. Runbook 10 is
 entirely about this.
 
-The practical consequence right now: **`nvidia-smi` will never tell you how much
-GPU memory your model is using.** Use `free -h` instead. That feels wrong and it
-is correct.
+The practical consequence right now: **the GPU-level memory total is unavailable,
+but per-process GPU memory is not.** This still works:
+
+```bash
+nvidia-smi --query-compute-apps=pid,process_name,used_memory --format=csv
+```
+
+**Status: VERIFIED** — 2026-08-24, with a model resident:
+
+```
+pid, process_name, used_gpu_memory [MiB]
+152615, /usr/local/bin/ollama, 5303 MiB
+```
+
+So: use `free -h` for the whole-machine picture and `--query-compute-apps` for
+per-process attribution. Runbook 10 explains why these two disagree, and why
+that is not an error.
 
 `P8` is the idle power state (**VERIFIED** idle). NVIDIA performance states run
 `P0` (maximum) through `P8`, so a loaded GPU should not sit at `P8` — seeing `P8`
